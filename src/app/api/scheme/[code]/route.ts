@@ -3,9 +3,9 @@ import { NextResponse } from 'next/server';
 
 export async function GET(
   request: Request,
-  { params }: { params: { code: string } }
+  { params }: { params: Promise<{ code: string }> }
 ) {
-  const { code } = params;
+  const { code } = await params;
   if (!code) {
     return NextResponse.json({ error: 'Scheme code is required' }, { status: 400 });
   }

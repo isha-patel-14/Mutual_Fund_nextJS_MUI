@@ -1,7 +1,7 @@
 // src/components/SIPCalculator.tsx
 'use client';
 import { useState } from 'react';
-import { Box, Button, Card, CardContent, CircularProgress, Grid, TextField, Typography, Alert } from '@mui/material';
+import { Box, Button, Card, CardContent, CircularProgress, TextField, Typography, Alert } from '@mui/material';
 import { LocalizationProvider, DatePicker } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import dayjs, { Dayjs } from 'dayjs';
@@ -54,34 +54,26 @@ export default function SIPCalculator({ schemeCode }: { schemeCode: string }) {
       <CardContent>
         <Typography variant="h6" gutterBottom>SIP Calculator</Typography>
         <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <Grid container spacing={2} alignItems="center">
-            <Grid item xs={12} sm={6} md={3}>
-              <TextField
-                label="Monthly Amount (₹)"
-                type="number"
-                value={amount}
-                onChange={(e) => setAmount(e.target.value)}
-                fullWidth
-              />
-            </Grid>
-            <Grid item xs={12} sm={6} md={3}>
-              <DatePicker label="Start Date" value={from} onChange={setFrom} sx={{ width: '100%' }} />
-            </Grid>
-            <Grid item xs={12} sm={6} md={3}>
-              <DatePicker label="End Date" value={to} onChange={setTo} sx={{ width: '100%' }} />
-            </Grid>
-            <Grid item xs={12} sm={6} md={3}>
-              <Button
-                variant="contained"
-                onClick={handleCalculate}
-                disabled={loading}
-                fullWidth
-                size="large"
-              >
-                {loading ? <CircularProgress size={24} /> : 'Calculate'}
-              </Button>
-            </Grid>
-          </Grid>
+          <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(4, 1fr)' }, gap: 2 }}>
+            <TextField
+              label="Monthly Amount (₹)"
+              type="number"
+              value={amount}
+              onChange={(e) => setAmount(e.target.value)}
+              fullWidth
+            />
+            <DatePicker label="Start Date" value={from} onChange={setFrom} sx={{ width: '100%' }} />
+            <DatePicker label="End Date" value={to} onChange={setTo} sx={{ width: '100%' }} />
+            <Button
+              variant="contained"
+              onClick={handleCalculate}
+              disabled={loading}
+              fullWidth
+              size="large"
+            >
+              {loading ? <CircularProgress size={24} /> : 'Calculate'}
+            </Button>
+          </Box>
         </LocalizationProvider>
         
         {error && <Alert severity="error" sx={{ mt: 2 }}>{error}</Alert>}
@@ -89,12 +81,17 @@ export default function SIPCalculator({ schemeCode }: { schemeCode: string }) {
         {result && (
           <Box mt={3}>
             <Typography variant="h5" align="center" gutterBottom>Calculation Result</Typography>
-            <Grid container spacing={2} mt={1}>
-                <Grid item xs={6} md={3}><Typography align="center">Total Invested: <br/><strong>₹{result.totalInvested.toLocaleString('en-IN')}</strong></Typography></Grid>
-                <Grid item xs={6} md={3}><Typography align="center">Current Value: <br/><strong>₹{result.currentValue.toLocaleString('en-IN')}</strong></Typography></Grid>
-                <Grid item xs={6} md={3}><Typography align="center">Absolute Return: <br/><strong style={{color: result.absoluteReturn > 0 ? '#4caf50' : '#f44336'}}>{result.absoluteReturn}%</strong></Typography></Grid>
-                <Grid item xs={6} md={3}><Typography align="center">Annualized (CAGR): <br/><strong style={{color: result.annualizedReturn > 0 ? '#4caf50' : '#f44336'}}>{result.annualizedReturn}%</strong></Typography></Grid>
-            </Grid>
+            <Box sx={{ 
+              display: 'grid', 
+              gridTemplateColumns: { xs: 'repeat(2, 1fr)', md: 'repeat(4, 1fr)' }, 
+              gap: 2,
+              mt: 2
+            }}>
+              <Typography align="center">Total Invested: <br/><strong>₹{result.totalInvested.toLocaleString('en-IN')}</strong></Typography>
+              <Typography align="center">Current Value: <br/><strong>₹{result.currentValue.toLocaleString('en-IN')}</strong></Typography>
+              <Typography align="center">Absolute Return: <br/><strong style={{color: result.absoluteReturn > 0 ? '#4caf50' : '#f44336'}}>{result.absoluteReturn}%</strong></Typography>
+              <Typography align="center">Annualized (CAGR): <br/><strong style={{color: result.annualizedReturn > 0 ? '#4caf50' : '#f44336'}}>{result.annualizedReturn}%</strong></Typography>
+            </Box>
           </Box>
         )}
       </CardContent>

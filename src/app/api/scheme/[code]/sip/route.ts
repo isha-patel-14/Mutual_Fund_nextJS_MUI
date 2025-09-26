@@ -4,9 +4,9 @@ import { SchemeDetails } from '@/lib/types';
 
 export async function POST(
   request: NextRequest,
-  { params }: { params: { code: string } }
+  { params }: { params: Promise<{ code: string }> }
 ) {
-  const { code } = params;
+  const { code } = await params;
   try {
     const { amount, period, rate } = await request.json();
 

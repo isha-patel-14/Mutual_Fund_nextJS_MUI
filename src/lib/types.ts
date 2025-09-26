@@ -2,6 +2,10 @@
 export interface Scheme {
   schemeCode: number;
   schemeName: string;
+  schemeType?: string;
+  schemeCategory?: string;
+  fundHouse?: string;
+  nav?: string;
 }
 
 export interface NavData {

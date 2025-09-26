@@ -6,9 +6,9 @@ import { SchemeDetails } from '@/lib/types';
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { code: string } }
+  { params }: { params: Promise<{ code: string }> }
 ) {
-  const { code } = params;
+  const { code } = await params;
   const searchParams = request.nextUrl.searchParams;
   const period = searchParams.get('period');
   let from = searchParams.get('from');

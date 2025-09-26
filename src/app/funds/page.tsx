@@ -43,16 +43,16 @@ export default function FundsPage() {
   // Extract unique categories
   const categories = useMemo(() => {
     if (!schemes) return [];
-    return ['all', ...new Set(schemes.map(scheme => scheme.category))].filter(Boolean);
+    return ['all', ...new Set(schemes.map(scheme => scheme.schemeCategory))].filter(Boolean);
   }, [schemes]);
 
   // Filter and sort schemes
   const processedSchemes = useMemo(() => {
     if (!schemes) return [];
     
-    let filtered = schemes.filter(scheme =>
+    const filtered = schemes.filter(scheme =>
       scheme.schemeName.toLowerCase().includes(searchTerm.toLowerCase()) &&
-      (categoryFilter === 'all' || scheme.category === categoryFilter)
+      (categoryFilter === 'all' || scheme.schemeCategory === categoryFilter)
     );
 
     // Apply sorting
@@ -63,9 +63,9 @@ export default function FundsPage() {
         case 'name-desc':
           return b.schemeName.localeCompare(a.schemeName);
         case 'nav-asc':
-          return (parseFloat(a.nav) || 0) - (parseFloat(b.nav) || 0);
+          return (parseFloat(a.nav ?? '0') || 0) - (parseFloat(b.nav ?? '0') || 0);
         case 'nav-desc':
-          return (parseFloat(b.nav) || 0) - (parseFloat(a.nav) || 0);
+          return (parseFloat(b.nav ?? '0') || 0) - (parseFloat(a.nav ?? '0') || 0);
         default:
           return 0;
       }
