@@ -61,24 +61,27 @@ A modern web application built with Next.js and Material-UI (MUI) for exploring 
 ### Installation
 
 1. Clone the repository:
-\`\`\`bash
+```
 git clone https://github.com/isha-patel-14/Mutual_Fund_nextJS_MUI.git
-cd Mutual_Fund_nextJS_MUI
-\`\`\`
+```
 
 2. Install dependencies:
-\`\`\`bash
+```
 npm install
+```
 # or
+```
 yarn install
-\`\`\`
+```
 
 3. Run the development server:
-\`\`\`bash
+```
 npm run dev
-# or
+```
+### or
+```
 yarn dev
-\`\`\`
+```
 
 4. Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
 
@@ -119,15 +122,6 @@ The project is set up to work seamlessly with Vercel's platform and will automat
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Author
-
-- Isha Patel
-- GitHub: [@isha-patel-14](https://github.com/isha-patel-14)
 
 ## Acknowledgments
 
