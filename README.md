@@ -1,5 +1,11 @@
 # Mutual Fund Explorer
 
+<p align="center">
+  <img src="https://res.cloudinary.com/dppoujdl9/image/upload/v1758868591/Screenshot_2025-09-26_120446_scrfco.png" alt="Screenshot 1" width="30%"/> &nbsp;&nbsp;&nbsp;
+  <img src="https://res.cloudinary.com/dppoujdl9/image/upload/v1758868591/Screenshot_2025-09-26_120424_rvy85w.png" alt="Screenshot 2" width="30%"/> &nbsp;&nbsp;&nbsp;
+  <img src="https://res.cloudinary.com/dppoujdl9/image/upload/v1758868591/Screenshot_2025-09-26_120502_qstjxo.png" alt="Screenshot 3" width="30%"/>
+</p>
+
 A modern web application built with Next.js and Material-UI (MUI) for exploring and analyzing mutual funds. The application provides real-time mutual fund data, interactive charts, and powerful search and filtering capabilities.
 
 ## Features
@@ -109,15 +115,6 @@ The application uses the MFAPI (mfapi.in) as its data source, which provides:
 - Optimized bundle size with proper code splitting
 - Responsive images and lazy loading
 
-## Deployment
-
-The application is deployed on Vercel. You can deploy your own instance by:
-
-1. Fork the repository
-2. Connect to Vercel
-3. Deploy with default settings
-
-The project is set up to work seamlessly with Vercel's platform and will automatically build and deploy on every push to the main branch.
 
 ## Contributing
 
